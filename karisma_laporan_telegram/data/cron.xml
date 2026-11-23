@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- 06.30 WIB = 23.30 UTC hari sebelumnya. Minggu dilewati di dalam metode. -->
+        <record id="cron_ringkasan_pagi" model="ir.cron">
+            <field name="name">Telegram: ringkasan pagi pabrik</field>
+            <field name="model_id" ref="model_karisma_telegram_chat"/>
+            <field name="state">code</field>
+            <field name="code">model._cron_ringkasan_pagi()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <!-- 23.30 UTC berikutnya (jam server di container = UTC) -->
+            <field name="nextcall" eval="(DateTime.now() + timedelta(minutes=30)).strftime('%Y-%m-%d 23:30:00')"/>
+        </record>
+    </data>
+</odoo>

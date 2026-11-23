@@ -1,0 +1,47 @@
+<section class="oe_container">
+  <div class="oe_row oe_spaced">
+    <h2 class="oe_slogan" style="color:#0B3B52">Daily Factory Report via Telegram</h2>
+    <h3 class="oe_slogan">Laporan pabrik lewat Telegram, setiap pagi, langsung dari data Odoo</h3>
+    <p style="max-width:780px;margin:0 auto 16px;text-align:center">Every morning (Monday to Saturday, 06.30 WIB) your management team
+    receives a summary in a Telegram group or private chat: production per product and material cost, new orders, deliveries,
+    invoices, payments received, attendance, overtime per department with estimated cost, finished goods stock, and a
+    <b>Needs attention</b> section (overdue receivables, raw materials running low, unshipped orders, overtime spikes).
+    Ask for numbers any time with <code>/laporan</code>, <code>/stok</code>, <code>/produksi</code>, <code>/lembur</code>,
+    <code>/piutang</code>. All figures are read directly from Odoo, no AI, no re-typing. Interface and messages are in
+    Indonesian.</p>
+    <div style="text-align:center"><img src="screenshot-1.png" style="max-width:31%;margin:4px" alt="Morning summary">
+    <img src="screenshot-2.png" style="max-width:31%;margin:4px" alt="Needs attention">
+    <img src="screenshot-3.png" style="max-width:31%;margin:4px" alt="/stok command"></div>
+    <p style="text-align:center;color:#666;font-size:12px">Screenshots use a fictional feed factory from our demo database.</p>
+  </div>
+</section>
+<section class="oe_container oe_dark">
+  <div class="oe_row oe_spaced">
+    <h3 class="oe_slogan">Setup in 5 steps / Cara memasang</h3>
+    <ol style="max-width:780px;margin:0 auto">
+      <li>Create a bot with @BotFather in Telegram and copy the token. / Buat bot di @BotFather dan salin tokennya.</li>
+      <li>In Odoo: Settings, Bot Telegram, <b>Sambungkan bot</b>. Paste the token and click Sambungkan. Odoo checks the token,
+      sets a webhook with a random secret, and registers the commands. Your Odoo must be reachable over HTTPS.</li>
+      <li>Send <code>/start</code> to the bot, or add the bot to a group.</li>
+      <li>In Settings, Bot Telegram, <b>Penerima</b>, click <b>Setujui</b> (approve) on that chat. Unapproved chats never receive
+      any numbers. / Chat yang belum disetujui tidak menerima angka apa pun.</li>
+      <li>Optional: <b>Kirim ringkasan sekarang</b> to send a test summary.</li>
+    </ol>
+  </div>
+</section>
+<section class="oe_container">
+  <div class="oe_row oe_spaced">
+    <h3 class="oe_slogan">Notes</h3>
+    <ul style="max-width:780px;margin:0 auto">
+      <li>Requires Manufacturing, Sales, Purchase, Inventory, Invoicing and Attendances. Produced and raw materials are read from
+      Bills of Materials.</li>
+      <li>Overtime uses Odoo 20 attendance overtime lines (Overtime 1 = 1.5x, Overtime 2 = 2x); cost = hours x monthly wage / 173 x
+      multiplier.</li>
+      <li>Thresholds (4 days of raw material, 1.5 days of finished goods, +30% overtime) are in <code>models/laporan.py</code>.</li>
+      <li>Time zone is fixed to WIB (UTC+7).</li>
+    </ul>
+    <p style="text-align:center;margin-top:20px">Made by <a href="https://karismatech.com/odoo/">Karisma Technologies</a>, Bandung,
+    Indonesia. Need it adapted to your company (other reports, WhatsApp, approval flows)? Contact us on WhatsApp +62 851-3351-3315
+    or <a href="mailto:info@karismatech.com">info@karismatech.com</a>.</p>
+  </div>
+</section>
